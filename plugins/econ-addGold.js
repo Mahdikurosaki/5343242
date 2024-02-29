@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
     else who = m.chat
     if (!who) throw '✳️ tag the user'
     let txt = text.replace('@' + who.split`@`[0], '').trim()
-    if (!txt) throw '✳️ Enter the amount of *Gold* you want to add'
+    if (!txt) throw '✳️ *أدخل كمية الذهب التي ترغب في إضافتها*'
     if (isNaN(txt)) throw '🔢 only numbers'
     let dmt = parseInt(txt)
     let diamond = dmt
@@ -13,16 +13,16 @@ let handler = async (m, { conn, text }) => {
     let users = global.db.data.users
    users[who].credit += dmt
 
-    await m.reply(`≡ *Gold ADDED*
+    await m.reply(`≡ *تمت إضافة الذهب*
 ┌──────────────
-▢ *Total:* ${dmt}
+▢ *مجموع:* ${dmt}
 └──────────────`)
-   conn.fakeReply(m.chat, `▢ Did you receive \n\n *+${dmt}* Gold`, who, m.text)
+   conn.fakeReply(m.chat, `▢ هل تلقيت؟ \n\n *+${dmt}* ذهب`, who, m.text)
 }
 
 handler.help = ['addgold <@user>']
 handler.tags = ['economy']
-handler.command = ['addgold'] 
+handler.command = ['إضافة_ذهب'] 
 handler.rowner = true
 
 export default handler
